@@ -18,7 +18,6 @@ jobs:
           
       - name: Install and test
         run: |
-          cd order-service
           pip install -r requirements.txt
           pytest tests/ -v
 
@@ -40,7 +39,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./order-service
+          context: .
           push: true
           tags: ${{ secrets.DOCKERUSERNAME }}/order-service:latest
           cache-from: type=gha
